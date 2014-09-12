@@ -3,6 +3,9 @@
 var    joi         = require('joi'),
     wreck     = require('wreck');
 
+var taskController = require('../controller/task');
+
+
 var handler = {}
 handler.serveWeather = function (request, reply) {
     wreck.get('http://weather.yahooapis.com/forecastrss?w=2502265', function (err, res, payload) {
@@ -26,14 +29,12 @@ var routes = [
             }
         }
     },{
-        method:'GET',
-        path:'/public/{param*}',
-        handler:{
-            directory:{
-                path: 'client',
-                listing:false
+            method: 'GET',
+            path: '/api/tasks',
+            config : {
+                handler: taskController.find
+                //validate : taskValidate.find
             }
-        }
     }
 
 ];
