@@ -28,13 +28,46 @@ var routes = [
                 reply('hello ' + req.params.id);
             }
         }
-    },{
+    },  
+    {
             method: 'GET',
-            path: '/api/tasks',
+            path: '/api/tasks/{task_id}',
             config : {
-                handler: taskController.find
-                //validate : taskValidate.find
+                handler: taskController.findByID,
+                //validate: taskValidate.findByID
             }
+    },
+    {
+        method: 'GET',
+        path: '/api/tasks',
+        config : {
+            handler: taskController.find
+            //validate : taskValidate.find
+        }
+    },
+    {
+        method: 'POST',
+        path: '/api/tasks',
+        config : {
+            handler : taskController.insert,
+            //validate : taskValidate.insert
+        }
+    },
+    {
+        method: 'PUT',
+        path: '/api/tasks/{task_id}',
+        config : {
+            handler: taskController.update,
+           // validate : taskValidate.update
+        }
+    },
+    {
+        method: 'DELETE',
+        path: '/api/tasks/{task_id}',
+        config : {
+            handler: taskController.delete,
+            //validate : taskValidate.delete
+        }
     }
 
 ];

@@ -1,9 +1,9 @@
 "use strict";
 
 var Hapi = require('hapi');
-var constants = require('src/config/constants');
+var constants = require('../config/constants');
 
-var paginationLinks = require('src/util/pagination-links');
+var paginationLinks = require('../util/pagination-links');
 var li = require('li');
 
 var _ = require('underscore');
