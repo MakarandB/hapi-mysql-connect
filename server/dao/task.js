@@ -18,6 +18,7 @@ TaskDAO.prototype = (function(){
 					" and userId = ?";
 
 			db.query({
+				userName : params.userName,
 				sql : sql, 
 				values: values,
 				callback : callback
@@ -33,6 +34,7 @@ TaskDAO.prototype = (function(){
 					" where userId = ?";
 
 			db.query({
+				userName : params.userName,
 				sql : sql, 
 				values: values,
 				callback : callback
@@ -50,6 +52,7 @@ TaskDAO.prototype = (function(){
 					" values (?,?)";
 
 			db.query({
+				userName : params.userName,
 				sql : sql, 
 				values: values,
 				callback : callback
@@ -69,6 +72,7 @@ TaskDAO.prototype = (function(){
 					" and taskId = ? ";
 
 			db.query({
+				userName : params.userName,
 				sql : sql, 
 				values: values,
 				callback : callback
@@ -86,6 +90,7 @@ TaskDAO.prototype = (function(){
 					" and userId = ?";
 
 			db.query({
+				userName : params.userName,
 				sql : sql, 
 				values: values,
 				callback : callback

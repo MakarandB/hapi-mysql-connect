@@ -1,4 +1,4 @@
-'use strict';
+    'use strict';
 //var hapi        = require('hapi'),
 var    joi         = require('joi'),
     wreck     = require('wreck');
@@ -31,7 +31,7 @@ var routes = [
     },  
     {
             method: 'GET',
-            path: '/api/tasks/{task_id}',
+            path: '/api/tasks/{taskId}',
             config : {
                 handler: taskController.findByID,
                 //validate: taskValidate.findByID
@@ -55,7 +55,7 @@ var routes = [
     },
     {
         method: 'PUT',
-        path: '/api/tasks/{task_id}',
+        path: '/api/tasks/{taskId}',
         config : {
             handler: taskController.update,
            // validate : taskValidate.update
@@ -63,7 +63,7 @@ var routes = [
     },
     {
         method: 'DELETE',
-        path: '/api/tasks/{task_id}',
+        path: '/api/tasks/{taskId}',
         config : {
             handler: taskController.delete,
             //validate : taskValidate.delete

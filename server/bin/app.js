@@ -20,6 +20,7 @@ server.ext('onRequest', function(request, next){
 	request.plugins.createControllerParams = function(requestParams){
 		var params = _.clone(requestParams);
 		params.userId = 5;//request.auth.credentials.userId;
+		params.userName = 'root';
 		return params;
 	};
 	next();

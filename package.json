@@ -1,12 +1,11 @@
 {
-  "name": "hapi-mysql-test",
+  "name": "hapi-mysql-connect",
   "version": "0.0.0",
-  "description": "A sample structure for building a REST API on top of hapi.js framework",
+  "description": "Sample Rest Hapi example with MySql Connnection everytime from user",
   "main": "index.js",
   "scripts": {
     "start": "grunt",
-    "test": "make test-unit",
-    "coverage": "make test-cov"
+    "test": "make test-unit",    "coverage": "make test-cov"
   },
   "repository": {
     "type": "git",

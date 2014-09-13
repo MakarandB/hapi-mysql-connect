@@ -12,31 +12,25 @@ TaskController.prototype = (function(){
 
 	return {
 		findByID: function findByID(request, reply) {
-
 			var helper = new ReplyHelper(request, reply);
 			var params = request.plugins.createControllerParams(request.params);
 
-			//taskDAO.findByID(params, function (err, data) {
-			//	helper.replyFindOne(err, data);
-			//});
-			reply("hello from task controller");
+			taskDAO.findByID(params, function (err, data) {
+				helper.replyFindOne(err, data);
+			});
 		},
 		find: function find(request, reply) {
-
 			var helper = new ReplyHelper(request, reply);
 			var params = request.plugins.createControllerParams(request.query);
-
 			taskDAO.find(params, function (err, data) {
 				helper.replyFind(err, data);
 			});
 		},
 		insert: function insert(request, reply) {
-
 			var helper = new ReplyHelper(request, reply);
 			var params = request.plugins.createControllerParams(request.payload);
 			var insert = Q.denodeify(taskDAO.insert);
 			var findByID = Q.denodeify(taskDAO.findByID);
-
 			insert(params).then(function insert(data) {
 
 				var result = data;

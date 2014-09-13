@@ -14,7 +14,7 @@ module.exports = function() {
 		},
 		database : {
 			host     : dbContants[env]['host'],
-			user     : dbContants[env]['user'],
+			//user     : dbContants[env]['user'],
 			password : dbContants[env]['password'],
 			database : dbContants[env]['database']
 		},
@@ -31,9 +31,6 @@ module.exports = function() {
 			'Check your enviroment variable NODE_PORT.');
 	} else if (!obj.database['host']) {
 		throw new Error('Missing constant database.host. ' +
-			'Check your enviroment variables.');
-	} else if (!obj.database['user']) {
-		throw new Error('Missing constant database.user. ' +
 			'Check your enviroment variables.');
 	} else if (!obj.database['password']) {
 		throw new Error('Missing constant database.password. ' +

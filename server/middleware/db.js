@@ -5,33 +5,29 @@ var _ = require('underscore');
 var constants = require('../config/constants.js');
 
 module.exports = function() {
-
 	var internals = {};
-	var externals = {};
+	var externals = {}
 
-	var options = {
-		multipleStatements: true
-	};
-	_.extend(options, constants.database);
-	var pool  = mysql.createPool(options);
-	internals.pool = pool;
-
-	internals.connect = function(connectHandler) {
-		pool.getConnection(function(err, connection) {
+	internals.connect = function(userName, connectHandler) {
+		var options = { 
+			user: userName
+		};
+		_.extend(options, constants.database);
+		var connection = mysql.createConnection(options);
+		connection.connect(function(err) {
 			if (err) return connectHandler(err, null);
-			return connectHandler(null, connection);
 		});
+		return connectHandler(null, connection);
 	};
-
 	externals.query = function(params) {
 		var sql = params.sql;
 		var values = params.values;
 		var queryHandler = params.callback;
-		internals.connect(function(err, connection) {
+		internals.connect(params.userName,function(err, connection) {
 			if (err) return queryHandler(err, null);
 			connection.query(sql, values, function(err, rows, fields) {
 				queryHandler(err, rows);
-				connection.release();
+				connection.end();
 			});
 		});
 	};
